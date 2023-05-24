@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+
+</head>
+
+<body>
+    <header class="header-container">
+        <div class="header-top">
+            <p><img class="logo" src="./image/logo.png" alt=""></p>
+            <ul class="nav-container">
+                <li><span class="allPhim show1" onclick="render(listPhim)">ALL</span></li>
+                <li><span class="hanhDong show1" onclick="render1()">PHIM HÀNH ĐỘNG </span></li>
+                <li><span class="kinhdi show1" onclick="render2()"> PHIM KINH DỊ</span></li>
+                <li><span class="phimhai show1" onclick="render3()">PHIM HÀI</span></li>
+                <li class="filter-movie">
+                    <select name="Phân loại" id="mySelect">
+                        <option>All</option>
+                        <option value="type" class="category" onclick="category()">Thể Loại Phim </option>
+                        <option value="" class="time" onclick="time()">Thời gian công chiếu </option>
+                    </select>
+                </li>
+                <li>
+                    <div class="searchMovie">
+                        <input type="text" id="searchId" placeholder="Tên phim muốn tìm">
+                        <button onclick="SearchMovie()">SEARCH</button>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+    </header>
+    <div class="renderListPhim" id="renderListPhim">
+        <!-- <div>
+            <p><img src="./image/phimhai1.jpg" alt=""></p>
+            <span>Tên phim:</span>
+            <span>Content:</span>
+            <span>Ngày công chiếu </span>    
+        </div> -->
+    </div>
+    <script>
+        let listPhim = [
+            {
+                id: "hd1",
+                name: "Bullet Train",
+                img: "./image/phimhd1.jpg",
+                content: "Facts, accuracy, and differences",
+                time: "14/1/2023",
+                keyPhim: "HD1"
+            },
+            {
+                id: "hd2",
+                name: "FAST X",
+                img: "./image/phimhd2.jpg",
+                time: "15/2/2023",
+                content: "“Every story has three acts.”",
+                keyPhim: "HD2"
+            }, {
+                id: "ph1",
+                name: "LẬT MẶT 6 - TẤM VÉ ĐỊNH MỆNH",
+                img: "./image/phimhai1.jpg",
+                time: "14/11/2023",
+                content: "Bạn chỉ sống 1 lần trên đời",
+                keyPhim: "PH"
+            }, {
+                id: "ph2",
+                name: "SIÊU SAO SIÊU NGỐ",
+                img: "./image/phimhai2.jpg",
+                time: "14/12/2023",
+                content: "Yêu thì nói không yêu cũng phải nói",
+                keyPhim: "PH"
+            }, {
+                id: "kd1",
+                name: "THE NUN",
+                img: "./image/kd1.png",
+                time: "14/1/2023",
+                content: "Come Here ....",
+                keyPhim: "KD"
+            }, {
+                id: "kd2",
+                name: "TIẾNG VỌNG TỪ ĐỊA NGỤC ",
+                img: "./image/kd2.jpg",
+                time: "14/12/2023",
+                content: "Một nữa sự thật có phải là sự thật !",
+                keyPhim: "KD"
+            }
+        ]
+
+        function render(listPhim) {
+            let result = "";
+            for (let i = 0; i < listPhim.length; i++) {
+                result +=
+                    `
+        <div class="movie">
+
+            <img src="${listPhim[i].img}"></img><br>
+            <span>Tên phim:${listPhim[i].name}</span> <br>
+            <span>Content:${listPhim[i].content}</span> <br>
+            <span>Ngày công chiếu: ${listPhim[i].time} </span>    
+        </div>
+        `
+
+            }
+            document.getElementById("renderListPhim").innerHTML = result;
+
+        }
+        render(listPhim)
+
+        function render1() {
+            console.log(111);
+            let listrender1 = []
+            for (let i = 0; i < listPhim.length; i++) {
+                if (listPhim[i].keyPhim.includes("HD")) {
+                    listrender1.push(listPhim[i])
+                }
+            }
+            console.log(listrender1)
+            render(listrender1)
+        }
+        function render3() {
+            console.log(111);
+            let listrender1 = []
+            for (let i = 0; i < listPhim.length; i++) {
+                if (listPhim[i].keyPhim.includes("PH")) {
+                    listrender1.push(listPhim[i])
+                }
+            }
+            console.log(listrender1)
+            render(listrender1)
+        }
+        function render2() {
+            let listrender1 = []
+            for (let i = 0; i < listPhim.length; i++) {
+                if (listPhim[i].keyPhim.includes("KD")) {
+                    listrender1.push(listPhim[i])
+                }
+            }
+            console.log(listrender1)
+            render(listrender1)
+        }
+        function SearchMovie() {
+            let valueSearch = document.getElementById("searchId").value;
+            let resultSearch = []
+            for (let i = 0; i < listPhim.length; i++) {
+                if (listPhim[i].name.indexOf(valueSearch) != -1) {
+                    resultSearch.push(listPhim[i])
+                }
+            }
+            render(resultSearch)
+        }
+
+        let filterMovie = document.querySelector(".filter-movie");
+        filterMovie.addEventListener("change", (e) => {
+            if (e.target.value === "type") {
+                // console.log(111)
+                let show1 = document.getElementsByClassName("show1")
+                for (let i = 0; i < show1.length; i++) {
+                    show1[i].classList.toggle("show")
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

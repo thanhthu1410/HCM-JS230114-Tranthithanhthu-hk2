@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.header-container {
+    position: fixed;
+    top: 0px;
+    background-color: #fff;
+    /* width: 100%; */
+    right: 0;
+    left: 0;
+    z-index: 999;
+    border-bottom: 1px solid black;
+    
+}
+.nav-container{
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: larger;
+    color: grey;
+    
+}
+.nav-container li:hover{
+    color: black;
+    font-size: larger;
+}
+.logo{
+    width: 100px;
+    height: 100px;
+}
+.header-top{
+    display: flex;
+   
+    justify-content: center;
+    align-items: center;
+}
+
+.header-top li{
+    list-style: none;
+}
+
+.renderListPhim {
+    margin-top: 103px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 20px;
+    background-color: black;
+    
+}
+
+.movie img{
+    width: 300px;
+    height: 300px;
+    margin: 20px;
+    margin: 0 auto;
+    
+   
+}
+.movie{
+    border: 3px solid rgb(222, 215, 215);
+    position: relative;
+    justify-content: center;
+    margin: 0 auto;
+    background-color: #fff;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.show {
+    color: rgb(216, 34, 13);
+}
+.searchMovie{
+    
+}
